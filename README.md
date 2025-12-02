@@ -15,6 +15,7 @@ Uma aplicação web moderna para geração de imagens via Inteligência Artifici
 ## ✨ Funcionalidades
 
 -   🖌️ **Geração de Imagens:** Criação de arte digital baseada em prompts de texto.
+-   📜 **Histórico de Sessão:** Galeria interativa que mantém as imagens geradas recentemente para fácil acesso e download.
 -   ⚡ **Feedback Reativo:** Sistema de loading detalhado usando *Observables* para comunicar cada etapa do processo (Interpretando, Renderizando, Finalizando).
 -   🎥 **Arquitetura Híbrida (Beta):** Interface preparada e segregada para expansão futura de geração de vídeos.
 -   🌗 **Dark/Light Mode:** Alternância de tema com persistência visual e UX polida.
