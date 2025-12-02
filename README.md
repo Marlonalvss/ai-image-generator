@@ -2,7 +2,7 @@
 
 Uma aplicação web moderna para geração de imagens via Inteligência Artificial, desenvolvida com **Next.js 15** e **Tailwind CSS v4**.
 
-🔗 **[Acesse o Projeto Online](https://ai-image-generator-gamma-pink.vercel.app/)**
+🔗 **[Acesse o Projeto Online](https://ai-image-generator-gamma-pink.vercel.app/){target="_blank" rel="noopener noreferrer"}**
 
 ## 🚀 Tecnologias
 
