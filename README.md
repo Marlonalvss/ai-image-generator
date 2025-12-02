@@ -2,7 +2,7 @@
 
 Uma aplicação web moderna para geração de imagens via Inteligência Artificial, desenvolvida com **Next.js 15** e **Tailwind CSS v4**.
 
-🔗 **[Acesse o Projeto Online](https://ai-image-generator-gamma-pink.vercel.app/){target="_blank" rel="noopener noreferrer"}**
+🔗 **[Acesse o Projeto Online](https://ai-image-generator-gamma-pink.vercel.app/)**
 
 ## 🚀 Tecnologias
 
@@ -28,6 +28,8 @@ Para obter resultados precisos e de alta qualidade, **recomenda-se digitar os pr
     ```bash
     git clone [https://github.com/SEU_USUARIO/SEU_REPO.git](https://github.com/SEU_USUARIO/SEU_REPO.git)
     ```
+    *(Nota: Substitua "SEU_USUARIO/SEU_REPO" pelo link real do seu GitHub depois de criar o repositório)*
+
 2.  Instale as dependências:
     ```bash
     npm install
