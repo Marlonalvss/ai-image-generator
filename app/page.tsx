@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useGenerationStatus } from "./hooks/useGenerationStatus";
 
-// Interface para nossas imagens do histórico
 interface ImageHistory {
   id: number;
   url: string;
@@ -16,7 +15,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<"image" | "video">("image");
   
-  // --- NOVO: ESTADO DO HISTÓRICO ---
   const [history, setHistory] = useState<ImageHistory[]>([]);
 
   const { status, startStream } = useGenerationStatus(); 
@@ -34,7 +32,6 @@ export default function Home() {
     if (!prompt) return;
     
     setLoading(true);
-    // Não limpamos a imagem atual imediatamente para evitar "piscar" feio
     
     const subscription = startStream();
 
@@ -51,13 +48,11 @@ export default function Home() {
         
         setImageSrc(url);
 
-        // --- NOVO: ADICIONA AO HISTÓRICO ---
         const newImage: ImageHistory = {
           id: Date.now(),
           url: url,
           prompt: prompt
         };
-        // Adiciona no começo da lista (os mais novos primeiro)
         setHistory(prev => [newImage, ...prev]);
 
       } else {
@@ -82,11 +77,9 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
-  // Função para "recuperar" uma imagem do histórico para a tela principal
   const selectFromHistory = (img: ImageHistory) => {
     setImageSrc(img.url);
     setPrompt(img.prompt);
-    // Rola a página para o topo suavemente
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -130,6 +123,7 @@ export default function Home() {
         {/* Input e Botão */}
         <div className="flex flex-col gap-4">
           <textarea
+            data-testid="input-prompt" 
             className="w-full p-4 rounded-lg border outline-none transition-all
               bg-white border-gray-300 text-gray-900 focus:border-purple-500 focus:ring-1 focus:ring-purple-500
               dark:bg-gray-800 dark:border-gray-700 dark:text-white"
@@ -140,6 +134,7 @@ export default function Home() {
           />
           
           <button
+            data-testid="btn-generate"
             onClick={generateImage}
             disabled={loading || !prompt || mode === 'video'}
             className="w-full py-3 px-6 rounded-lg bg-purple-600 hover:bg-purple-700 text-white disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
@@ -163,6 +158,7 @@ export default function Home() {
           >
             {imageSrc ? (
               <img 
+                data-testid="generated-image"
                 src={imageSrc} 
                 alt="Imagem Principal" 
                 className="w-full h-auto object-cover animate-fade-in"
@@ -193,7 +189,7 @@ export default function Home() {
           )}
         </div>
 
-        {/* --- NOVO: SEÇÃO DE HISTÓRICO (GALERIA) --- */}
+        {/* Galeria omitida para brevidade, mas o resto segue igual */}
         {history.length > 0 && (
           <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
             <h3 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
@@ -211,12 +207,11 @@ export default function Home() {
                     alt="Histórico" 
                     className="w-full h-full object-cover"
                   />
-                  {/* Overlay com Prompt ao passar o mouse */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-2 text-center">
                     <p className="text-xs text-white line-clamp-3 mb-2">{img.prompt}</p>
                     <button 
                       onClick={(e) => {
-                        e.stopPropagation(); // Evita selecionar a imagem ao clicar em baixar
+                        e.stopPropagation();
                         downloadImage(img.url);
                       }}
                       className="text-xs bg-white text-black px-2 py-1 rounded hover:bg-gray-200"
