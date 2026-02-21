@@ -11,7 +11,7 @@
     "test:api": "newman run postman/ai-studio.postman_collection.json"
   },
   "dependencies": {
-    "next": "16.0.6",
+    "next": "16.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "rxjs": "^7.8.2"
